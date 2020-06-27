@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebMotorsRestAPI.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class WebMotorsAnuncioController : Controller
     {
         // GET api/values
         [HttpGet]
