@@ -3,42 +3,64 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WebMotorsRestAPI.Model;
+using WebMotorsRestAPI.Services;
 
 namespace WebMotorsRestAPI.Controllers
 {
     [Route("api/[controller]")]
     public class WebMotorsAnuncioController : Controller
     {
-        // GET api/values
+        private readonly IAnuncioService _anuncioService;
+
+        public WebMotorsAnuncioController(IAnuncioService anuncioService)
+        {
+            _anuncioService = anuncioService;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(_anuncioService.FindAll());
         }
 
-        // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            var anuncio = _anuncioService.FindByID(id);
+            if (anuncio == null)
+            {
+                return NotFound("Anuncio não Encontrado");
+            }
+
+            return Ok(anuncio);
         }
 
-        // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] Anuncio anuncio)
         {
+            if (anuncio == null)
+            {
+                return BadRequest();
+            }
+            return new ObjectResult(_anuncioService.Create(anuncio));
         }
 
-        // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] Anuncio anuncio)
         {
+            if (anuncio == null)
+            {
+                return BadRequest();
+            }
+            return new ObjectResult(_anuncioService.Update(anuncio));
         }
 
-        // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            _anuncioService.Delete(id);
+            return NoContent();
         }
     }
 }

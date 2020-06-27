@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using WebMotorsRestAPI.Services;
+using WebMotorsRestAPI.Services.Implementations;
 
 namespace WebMotorsRestAPI
 {
@@ -24,6 +26,8 @@ namespace WebMotorsRestAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddScoped<IAnuncioService, AnuncioServiceImpl>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

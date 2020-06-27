@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace WebMotorsRestAPI.Model
+﻿namespace WebMotorsRestAPI.Model
 {
     public class Anuncio
     {
