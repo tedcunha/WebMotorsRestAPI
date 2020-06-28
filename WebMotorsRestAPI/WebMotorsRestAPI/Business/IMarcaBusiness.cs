@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebMotorsRestAPI.Model;
 
-namespace WebMotorsRestAPI.Services
+namespace WebMotorsRestAPI.Business
 {
     public interface IMarcaBusiness
     {

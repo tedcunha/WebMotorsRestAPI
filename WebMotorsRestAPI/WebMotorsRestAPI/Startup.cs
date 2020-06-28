@@ -10,8 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using WebMotorsRestAPI.Model.Context;
-using WebMotorsRestAPI.Services;
-using WebMotorsRestAPI.Services.Implementations;
+using WebMotorsRestAPI.Business;
+using WebMotorsRestAPI.Business.Implementations;
 
 namespace WebMotorsRestAPI
 {

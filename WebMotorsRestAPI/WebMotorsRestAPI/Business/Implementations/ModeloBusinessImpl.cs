@@ -7,7 +7,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using WebMotorsRestAPI.Model;
 
-namespace WebMotorsRestAPI.Services.Implementations
+namespace WebMotorsRestAPI.Business.Implementations
 {
     public class ModeloBusinessImpl : IModeloBusiness
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using WebMotorsRestAPI.Model;
 
-namespace WebMotorsRestAPI.Services
+namespace WebMotorsRestAPI.Business
 {
     public interface IAnuncioBusiness
     {

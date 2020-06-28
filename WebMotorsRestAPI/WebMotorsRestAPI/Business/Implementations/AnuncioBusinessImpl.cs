@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using WebMotorsRestAPI.Model;
 using WebMotorsRestAPI.Model.Context;
 
-namespace WebMotorsRestAPI.Services.Implementations
+namespace WebMotorsRestAPI.Business.Implementations
 {
     public class AnuncioBusinessImpl : IAnuncioBusiness
     {
