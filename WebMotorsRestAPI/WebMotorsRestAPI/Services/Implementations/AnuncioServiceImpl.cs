@@ -1,67 +1,88 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using WebMotorsRestAPI.Model;
+using WebMotorsRestAPI.Model.Context;
 
 namespace WebMotorsRestAPI.Services.Implementations
 {
     public class AnuncioServiceImpl : IAnuncioService
     {
-        private volatile int count;
+        private readonly MySqlContext _mySqlContext;
+
+        public AnuncioServiceImpl(MySqlContext mySqlContext)
+        {
+            _mySqlContext = mySqlContext;
+        }
+
 
         public Anuncio Create(Anuncio anuncio)
         {
+            try
+            {
+                _mySqlContext.Add(anuncio);
+                _mySqlContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
             return anuncio;
         }
 
         public void Delete(long Id)
         {
+            var retorno = _mySqlContext.tb_anunciowebmotors.SingleOrDefault(p => p.Id == Id);
+            try
+            {
+                if (retorno != null)
+                {
+                    _mySqlContext.tb_anunciowebmotors.Remove(retorno);
+                    _mySqlContext.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<Anuncio> FindAll()
         {
-            List<Anuncio> anuncios = new List<Anuncio>();
-            for (int i = 0; i < 8; i++)
-            {
-                Anuncio anuncio = MockAnuncio(i);
-                anuncios.Add(anuncio);
-            }
-            return anuncios;
+            return _mySqlContext.tb_anunciowebmotors.ToList();
         }
 
         public Anuncio FindByID(long Id)
         {
-            return new Anuncio { Id = 1,
-                                 Marca = "Fiat",
-                                 Modelo = "Idea",
-                                 Versao = "Adventure",
-                                 Ano = 2008,
-                                 Quilometragem = 10850,
-                                 Observacao = "Teste de Observação"
-            };
+            return _mySqlContext.tb_anunciowebmotors.SingleOrDefault(p => p.Id == Id);
         }
 
         public Anuncio Update(Anuncio anuncio)
         {
+            if (!Exist(anuncio.Id))
+            {
+                return new Anuncio();
+            }
+
+            var retorno = _mySqlContext.tb_anunciowebmotors.SingleOrDefault(p => p.Id == anuncio.Id);
+
+            try
+            {
+                _mySqlContext.Entry(retorno).CurrentValues.SetValues(anuncio);
+                _mySqlContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             return anuncio;
         }
 
-        private Anuncio MockAnuncio(int i)
+        private bool Exist(int? id)
         {
-            return new Anuncio
-            {
-                Id = IncrementAndGet(),
-                Marca = "Fiat",
-                Modelo = "Idea",
-                Versao = "Adventure",
-                Ano = 2008,
-                Quilometragem = 10850,
-                Observacao = "Teste de Observação"
-            };
-        }
-
-        private int IncrementAndGet()
-        {
-            return Interlocked.Increment(ref count);
+            return _mySqlContext.tb_anunciowebmotors.Any(p => p.Id == id);
         }
     }
 }

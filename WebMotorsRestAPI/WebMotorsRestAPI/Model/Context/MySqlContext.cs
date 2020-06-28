@@ -16,7 +16,7 @@ namespace WebMotorsRestAPI.Model.Context
         {
         }
 
-        public DbSet<Anuncio> anuncios { get; set; }
+        public DbSet<Anuncio> tb_anunciowebmotors { get; set; }
 
     }
 
