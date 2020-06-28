@@ -13,34 +13,34 @@ namespace WebMotorsRestAPI.Controllers
     [Route("api/v{version:apiVersion}/[controller]")]
     public class WebMotorsAnuncioController : Controller
     {
-        private readonly IAnuncioBusiness _anuncioService;
-        private readonly IMarcaBusiness _marcaService;
-        private readonly IModeloBusiness _modeloService;
-        private readonly IVersaoBusiness _versaoService;
-        private readonly IVeiculoBusiness _veiculoService;
+        private readonly IAnuncioBusiness _anuncioBusiness;
+        private readonly IMarcaBusiness _marcaBusiness;
+        private readonly IModeloBusiness _modeloBusiness;
+        private readonly IVersaoBusiness _versaoBusiness;
+        private readonly IVeiculoBusiness _veiculoBusiness;
 
-        public WebMotorsAnuncioController(IAnuncioBusiness anuncioService, 
-                                          IMarcaBusiness marcaService, 
-                                          IModeloBusiness modeloService, 
-                                          IVersaoBusiness versaoService, 
-                                          IVeiculoBusiness veiculoService)
+        public WebMotorsAnuncioController(IAnuncioBusiness anuncioBusiness, 
+                                          IMarcaBusiness marcaBusiness, 
+                                          IModeloBusiness modeloBusiness, 
+                                          IVersaoBusiness versaoBusiness, 
+                                          IVeiculoBusiness veiculoBusiness)
         {
-            _anuncioService = anuncioService;
-            _marcaService = marcaService;
-            _modeloService = modeloService;
-            _versaoService = versaoService;
-            _veiculoService = veiculoService;
+            _anuncioBusiness = anuncioBusiness;
+            _marcaBusiness = marcaBusiness;
+            _modeloBusiness = modeloBusiness;
+            _versaoBusiness = versaoBusiness;
+            _veiculoBusiness = veiculoBusiness;
         }
 
         [HttpGet("PesquisarTodosAnuncios")]
         public IActionResult PesquisarTodosAnuncios()
         {
-            var anuncios = _anuncioService.FindAll();
+            var anuncios = _anuncioBusiness.FindAll();
             if (anuncios == null || anuncios.Count == 0)
             {
                 return NotFound("Anuncios não Encontrados");
             }
-            return Ok(_anuncioService.FindAll());
+            return Ok(_anuncioBusiness.FindAll());
         }
 
         [HttpGet("PesquisarVeiculos")]
@@ -51,7 +51,7 @@ namespace WebMotorsRestAPI.Controllers
                 return BadRequest();
             }
 
-            var veiculos = _veiculoService.RetornaVeiculos(filtro.Marca, 
+            var veiculos = _veiculoBusiness.RetornaVeiculos(filtro.Marca, 
                                                            filtro.Modelo,
                                                            filtro.Versao,
                                                            filtro.Kilometragem,
@@ -72,7 +72,7 @@ namespace WebMotorsRestAPI.Controllers
         [HttpGet("PesquisarAnuncioPorID/{id}")]
         public IActionResult PesquisarAnuncioPorID(int id)
         {
-            var anuncio = _anuncioService.FindByID(id);
+            var anuncio = _anuncioBusiness.FindByID(id);
             if (anuncio == null)
             {
                 return NotFound("Anuncio não Encontrado");
@@ -89,47 +89,47 @@ namespace WebMotorsRestAPI.Controllers
             }
 
             // Verifica se Esixte Marcas Cadastras
-            var marcas = _marcaService.PesquisaTodasMarcas();
+            var marcas = _marcaBusiness.PesquisaTodasMarcas();
             if (marcas == null || marcas.Count == 0)
             {
                 return NotFound("Marcas não Encontradas");
             }
 
             //Verica se a Marca Especifica Existe
-            Marca marca = _marcaService.RetornaMarca(anuncio.Marca.ToString());
+            Marca marca = _marcaBusiness.RetornaMarca(anuncio.Marca.ToString());
             if (marca == null)
             {
                 return NotFound($"Marca {anuncio.Marca} não Encontrada!");
             }
 
             //Pegando o ID da Marca Selecionada e Verifica se Existe Modelos Cadastrados
-            var modelos = _modeloService.PesquisaTodosModelos(marca.ID);
+            var modelos = _modeloBusiness.PesquisaTodosModelos(marca.ID);
             if (modelos == null || modelos.Count == 0)
             {
                 return NotFound("Modelos não Encontradas");
             }
 
             // Retorna o Modelo Selecionado
-            Modelo modelo = _modeloService.RetornaModelo(marca.ID, anuncio.Modelo);
+            Modelo modelo = _modeloBusiness.RetornaModelo(marca.ID, anuncio.Modelo);
             if (modelo == null)
             {
                 return NotFound($"Modelo {anuncio.Modelo} não Encontrado!");
             }
 
             //Pesquisa Versões de Veiculos 
-            var versoes = _versaoService.PesquisaTodoasVersoes(modelo.ID);
+            var versoes = _versaoBusiness.PesquisaTodoasVersoes(modelo.ID);
             if (versoes == null || versoes.Count == 0)
             {
                 return NotFound("Versões não Encontradas");
             }
 
-            Versao versao = _versaoService.RetornaVersao(modelo.ID, anuncio.Versao);
+            Versao versao = _versaoBusiness.RetornaVersao(modelo.ID, anuncio.Versao);
             if (versao == null)
             {
                 return NotFound($"Versão {anuncio.Versao} não Encontrada!");
             }
 
-            return new ObjectResult(_anuncioService.Create(anuncio));
+            return new ObjectResult(_anuncioBusiness.Create(anuncio));
         }
 
         [HttpPut("AlterarAnuncio")]
@@ -139,13 +139,13 @@ namespace WebMotorsRestAPI.Controllers
             {
                 return BadRequest();
             }
-            return new ObjectResult(_anuncioService.Update(anuncio));
+            return new ObjectResult(_anuncioBusiness.Update(anuncio));
         }
 
         [HttpDelete("DeletarAnuncio/{id}")]
         public IActionResult DeletarAnuncio(int id)
         {
-            _anuncioService.Delete(id);
+            _anuncioBusiness.Delete(id);
             return NoContent();
         }
     }
