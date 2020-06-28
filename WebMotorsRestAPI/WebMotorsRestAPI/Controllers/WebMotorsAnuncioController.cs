@@ -49,21 +49,6 @@ namespace WebMotorsRestAPI.Controllers
                 return BadRequest();
             }
 
-            if (filtro.Kilometragem == null)
-            {
-                filtro.Kilometragem = 0;
-            }
-
-            if (filtro.AnoModelo == null)
-            {
-                filtro.AnoModelo = 0;
-            }
-
-            if (filtro.AnoFabricacao == null)
-            {
-                filtro.AnoFabricacao = 0;
-            }
-
             var veiculos = _veiculoService.RetornaVeiculos(filtro.Marca, 
                                                            filtro.Modelo,
                                                            filtro.Versao,
