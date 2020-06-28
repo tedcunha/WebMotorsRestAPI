@@ -8,7 +8,9 @@ using WebMotorsRestAPI.Services;
 
 namespace WebMotorsRestAPI.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
+    [ApiVersion("1")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class WebMotorsAnuncioController : Controller
     {
         private readonly IAnuncioService _anuncioService;

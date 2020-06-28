@@ -32,6 +32,8 @@ namespace WebMotorsRestAPI
 
             services.AddMvc();
 
+            services.AddApiVersioning();
+
             services.AddScoped<IAnuncioService, AnuncioServiceImpl>();
             services.AddScoped<IMarcaService, MarcaServiceImpl>();
             services.AddScoped<IModeloService, ModeloServiceImpl>();

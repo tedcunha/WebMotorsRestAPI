@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "1tO4AQ8gPPsTnNt4eJrYUMqeZPEkJXpRFZfjKJxojepof7mLdgQa/5qqxM3dzQLAGAGQakx0kPhQrAySv7PR4w==",
+  "dgSpecHash": "10pheXIOU60sQIfUbCaN8odzowXnUwdVCsqDW6+XXOiNXwz1075yxm9f2M/hBCers+i4Wc45HAq+4s9Ne5nD3Q==",
   "success": true,
   "projectFilePath": "C:\\Ricardo\\testes\\WebMotors\\WebMotorsRestAPI\\WebMotorsRestAPI\\WebMotorsRestAPI\\WebMotorsRestAPI\\WebMotorsRestAPI.csproj",
   "expectedPackageFiles": [
@@ -67,6 +67,7 @@
     "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.viewcompilation\\2.0.4\\microsoft.aspnetcore.mvc.razor.viewcompilation.2.0.4.nupkg.sha512",
     "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.aspnetcore.mvc.razorpages\\2.0.4\\microsoft.aspnetcore.mvc.razorpages.2.0.4.nupkg.sha512",
     "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.aspnetcore.mvc.taghelpers\\2.0.4\\microsoft.aspnetcore.mvc.taghelpers.2.0.4.nupkg.sha512",
+    "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning\\2.2.0\\microsoft.aspnetcore.mvc.versioning.2.2.0.nupkg.sha512",
     "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.aspnetcore.mvc.viewfeatures\\2.0.4\\microsoft.aspnetcore.mvc.viewfeatures.2.0.4.nupkg.sha512",
     "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.aspnetcore.nodeservices\\2.0.4\\microsoft.aspnetcore.nodeservices.2.0.4.nupkg.sha512",
     "C:\\Users\\Ricardo\\.nuget\\packages\\microsoft.aspnetcore.owin\\2.0.3\\microsoft.aspnetcore.owin.2.0.3.nupkg.sha512",
