@@ -1,7 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading;
+using System.Threading.Tasks;
 using WebMotorsRestAPI.Model;
 using WebMotorsRestAPI.Model.Context;
 
@@ -51,8 +55,25 @@ namespace WebMotorsRestAPI.Services.Implementations
 
         public List<Anuncio> FindAll()
         {
+            RunAsync();
             return _mySqlContext.tb_anunciowebmotors.ToList();
         }
+
+        static async Task RunAsync()
+        {
+            var client = new HttpClient();
+            client.BaseAddress = new Uri("http://desafioonline.webmotors.com.br/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage responseA = await client.GetAsync("api/OnlineChallenge/Make");
+            HttpResponseMessage modelos = await client.GetAsync("api/OnlineChallenge/Model?MakeID=3");
+            if (responseA.IsSuccessStatusCode)
+            {
+                string teste = await modelos.Content.ReadAsStringAsync();
+                List<Modelo> lstmodelos = JsonConvert.DeserializeObject<List<Modelo>>(teste);
+            }
+        }
+
 
         public Anuncio FindByID(long Id)
         {
