@@ -6,7 +6,7 @@ using WebMotorsRestAPI.Model;
 
 namespace WebMotorsRestAPI.Services
 {
-    public interface IModeloService
+    public interface IModeloBusiness
     {
         List<Modelo> PesquisaTodosModelos(int IdMarca);
         Modelo RetornaModelo(int IdMarca, string strmodelo);

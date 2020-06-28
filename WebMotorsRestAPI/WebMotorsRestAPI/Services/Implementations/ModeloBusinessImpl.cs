@@ -9,7 +9,7 @@ using WebMotorsRestAPI.Model;
 
 namespace WebMotorsRestAPI.Services.Implementations
 {
-    public class ModeloServiceImpl : IModeloService
+    public class ModeloBusinessImpl : IModeloBusiness
     {
         public List<Modelo> PesquisaTodosModelos(int IdMarca)
         {

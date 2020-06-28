@@ -34,11 +34,11 @@ namespace WebMotorsRestAPI
 
             services.AddApiVersioning();
 
-            services.AddScoped<IAnuncioService, AnuncioServiceImpl>();
-            services.AddScoped<IMarcaService, MarcaServiceImpl>();
-            services.AddScoped<IModeloService, ModeloServiceImpl>();
-            services.AddScoped<IVersaoService, VersaoServiceImpl>();
-            services.AddScoped<IVeiculoService, VeiculoServiceImpl>();
+            services.AddScoped<IAnuncioBusiness, AnuncioBusinessImpl>();
+            services.AddScoped<IMarcaBusiness, MarcaBusinessImpl>();
+            services.AddScoped<IModeloBusiness, ModeloBusinessImpl>();
+            services.AddScoped<IVersaoBusiness, VersaoBusinessImpl>();
+            services.AddScoped<IVeiculoBusiness, VeiculoBusinessImpl>();
 
         }
 

@@ -13,17 +13,17 @@ namespace WebMotorsRestAPI.Controllers
     [Route("api/v{version:apiVersion}/[controller]")]
     public class WebMotorsAnuncioController : Controller
     {
-        private readonly IAnuncioService _anuncioService;
-        private readonly IMarcaService _marcaService;
-        private readonly IModeloService _modeloService;
-        private readonly IVersaoService _versaoService;
-        private readonly IVeiculoService _veiculoService;
+        private readonly IAnuncioBusiness _anuncioService;
+        private readonly IMarcaBusiness _marcaService;
+        private readonly IModeloBusiness _modeloService;
+        private readonly IVersaoBusiness _versaoService;
+        private readonly IVeiculoBusiness _veiculoService;
 
-        public WebMotorsAnuncioController(IAnuncioService anuncioService, 
-                                          IMarcaService marcaService, 
-                                          IModeloService modeloService, 
-                                          IVersaoService versaoService, 
-                                          IVeiculoService veiculoService)
+        public WebMotorsAnuncioController(IAnuncioBusiness anuncioService, 
+                                          IMarcaBusiness marcaService, 
+                                          IModeloBusiness modeloService, 
+                                          IVersaoBusiness versaoService, 
+                                          IVeiculoBusiness veiculoService)
         {
             _anuncioService = anuncioService;
             _marcaService = marcaService;

@@ -3,7 +3,7 @@ using WebMotorsRestAPI.Model;
 
 namespace WebMotorsRestAPI.Services
 {
-    public interface IAnuncioService
+    public interface IAnuncioBusiness
     {
         Anuncio Create(Anuncio pessoa);
         Anuncio FindByID(long Id);

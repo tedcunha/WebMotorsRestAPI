@@ -9,7 +9,7 @@ using WebMotorsRestAPI.Model;
 
 namespace WebMotorsRestAPI.Services.Implementations
 {
-    public class MarcaServiceImpl : IMarcaService
+    public class MarcaBusinessImpl : IMarcaBusiness
     {
         public List<Marca> PesquisaTodasMarcas()
         {

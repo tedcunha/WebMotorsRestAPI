@@ -12,11 +12,11 @@ using WebMotorsRestAPI.Model.Context;
 
 namespace WebMotorsRestAPI.Services.Implementations
 {
-    public class AnuncioServiceImpl : IAnuncioService
+    public class AnuncioBusinessImpl : IAnuncioBusiness
     {
         private readonly MySqlContext _mySqlContext;
 
-        public AnuncioServiceImpl(MySqlContext mySqlContext)
+        public AnuncioBusinessImpl(MySqlContext mySqlContext)
         {
             _mySqlContext = mySqlContext;
         }

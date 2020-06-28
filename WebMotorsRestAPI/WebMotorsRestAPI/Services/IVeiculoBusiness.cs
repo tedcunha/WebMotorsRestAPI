@@ -6,7 +6,7 @@ using WebMotorsRestAPI.Model;
 
 namespace WebMotorsRestAPI.Services
 {
-    public interface IVeiculoService
+    public interface IVeiculoBusiness
     {
         List<Veiculos> RetornaVeiculos(string marca,
                                        string modelo,

@@ -9,7 +9,7 @@ using WebMotorsRestAPI.Model;
 
 namespace WebMotorsRestAPI.Services.Implementations
 {
-    public class VersaoServiceImpl : IVersaoService
+    public class VersaoBusinessImpl : IVersaoBusiness
     {
         public List<Versao> PesquisaTodoasVersoes(int IdModelo)
         {

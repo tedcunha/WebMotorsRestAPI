@@ -6,7 +6,7 @@ using WebMotorsRestAPI.Model;
 
 namespace WebMotorsRestAPI.Services
 {
-    public interface IVersaoService
+    public interface IVersaoBusiness
     {
         List<Versao> PesquisaTodoasVersoes(int IdModelo);
         Versao RetornaVersao(int IdModelo, string strVersao);

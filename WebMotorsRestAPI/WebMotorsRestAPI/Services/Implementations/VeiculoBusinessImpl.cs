@@ -10,7 +10,7 @@ using WebMotorsRestAPI.Model;
 
 namespace WebMotorsRestAPI.Services.Implementations
 {
-    public class VeiculoServiceImpl : IVeiculoService
+    public class VeiculoBusinessImpl : IVeiculoBusiness
     {
         public List<Veiculos> RetornaVeiculos(string marca, 
                                               string modelo, 
