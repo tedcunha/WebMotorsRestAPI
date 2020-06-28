@@ -33,6 +33,11 @@ namespace WebMotorsRestAPI
             services.AddMvc();
 
             services.AddScoped<IAnuncioService, AnuncioServiceImpl>();
+            services.AddScoped<IMarcaService, MarcaServiceImpl>();
+            services.AddScoped<IModeloService, ModeloServiceImpl>();
+            services.AddScoped<IVersaoService, VersaoServiceImpl>();
+            services.AddScoped<IVeiculoService, VeiculoServiceImpl>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
