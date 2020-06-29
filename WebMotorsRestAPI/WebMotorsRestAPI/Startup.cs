@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using WebMotorsRestAPI.Model.Context;
 using WebMotorsRestAPI.Business;
 using WebMotorsRestAPI.Business.Implementations;
+using WebMotorsRestAPI.Repository;
+using WebMotorsRestAPI.Repository.Implementations;
 
 namespace WebMotorsRestAPI
 {
@@ -34,6 +36,11 @@ namespace WebMotorsRestAPI
             services.AddScoped<IVersaoBusiness, VersaoBusinessImpl>();
             services.AddScoped<IVeiculoBusiness, VeiculoBusinessImpl>();
 
+            services.AddScoped<IAnuncioRepository, AnuncioRepositoryImpl>();
+            services.AddScoped<IMarcaRepository, MarcaRepositoryImpl>();
+            services.AddScoped<IModeloRepository, ModeloRepositoryImpl>();
+            services.AddScoped<IVersaoRepository, VersaoRepositoryImpl>();
+            services.AddScoped<IVeiculoRepository, VeiculoRepositoryImpl>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

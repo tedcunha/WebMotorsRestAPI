@@ -9,85 +9,42 @@ using System.Threading;
 using System.Threading.Tasks;
 using WebMotorsRestAPI.Model;
 using WebMotorsRestAPI.Model.Context;
+using WebMotorsRestAPI.Repository;
 
 namespace WebMotorsRestAPI.Business.Implementations
 {
     public class AnuncioBusinessImpl : IAnuncioBusiness
     {
-        private readonly MySqlContext _mySqlContext;
+        private readonly IAnuncioRepository _anuncioRepository;
 
-        public AnuncioBusinessImpl(MySqlContext mySqlContext)
+        public AnuncioBusinessImpl(IAnuncioRepository anuncioRepository)
         {
-            _mySqlContext = mySqlContext;
+            _anuncioRepository = anuncioRepository;
         }
-
 
         public Anuncio Create(Anuncio anuncio)
         {
-            try
-            {
-                _mySqlContext.Add(anuncio);
-                _mySqlContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-            return anuncio;
+            return _anuncioRepository.Create(anuncio);
         }
 
         public void Delete(long Id)
         {
-            var retorno = _mySqlContext.tb_anunciowebmotors.SingleOrDefault(p => p.Id == Id);
-            try
-            {
-                if (retorno != null)
-                {
-                    _mySqlContext.tb_anunciowebmotors.Remove(retorno);
-                    _mySqlContext.SaveChanges();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            _anuncioRepository.Delete(Id);
         }
 
         public List<Anuncio> FindAll()
         {
-            return _mySqlContext.tb_anunciowebmotors.ToList();
+            return _anuncioRepository.FindAll();
         }
 
         public Anuncio FindByID(long Id)
         {
-            return _mySqlContext.tb_anunciowebmotors.SingleOrDefault(p => p.Id == Id);
+            return _anuncioRepository.FindByID(Id);
         }
 
         public Anuncio Update(Anuncio anuncio)
         {
-            if (!Exist(anuncio.Id))
-            {
-                return new Anuncio();
-            }
-
-            var retorno = _mySqlContext.tb_anunciowebmotors.SingleOrDefault(p => p.Id == anuncio.Id);
-
-            try
-            {
-                _mySqlContext.Entry(retorno).CurrentValues.SetValues(anuncio);
-                _mySqlContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return anuncio;
-        }
-
-        private bool Exist(int? id)
-        {
-            return _mySqlContext.tb_anunciowebmotors.Any(p => p.Id == id);
+            return _anuncioRepository.Update(anuncio);
         }
     }
 }

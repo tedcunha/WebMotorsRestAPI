@@ -91,6 +91,11 @@ namespace WebMotorsRestAPI.Controllers
                 return NotFound("Marcas não Encontradas");
             }
 
+            if (anuncio.Marca.Trim().Length > 45)
+            {
+                return NotFound("Marca não pode ter mais de 45 digitos");
+            }
+
             //Verica se a Marca Especifica Existe
             Marca marca = _marcaBusiness.RetornaMarca(anuncio.Marca.ToString());
             if (marca == null)
@@ -112,6 +117,11 @@ namespace WebMotorsRestAPI.Controllers
                 return NotFound($"Modelo {anuncio.Modelo} não Encontrado!");
             }
 
+            if (anuncio.Modelo.Trim().Length > 45)
+            {
+                return NotFound("Modelo não pode ter mais de 45 digitos");
+            }
+
             //Pesquisa Versões de Veiculos 
             var versoes = _versaoBusiness.PesquisaTodoasVersoes(modelo.ID);
             if (versoes == null || versoes.Count == 0)
@@ -125,6 +135,11 @@ namespace WebMotorsRestAPI.Controllers
                 return NotFound($"Versão {anuncio.Versao} não Encontrada!");
             }
 
+            if (anuncio.Versao.Trim().Length > 45)
+            {
+                return NotFound("Versão não pode ter mais de 45 digitos");
+            }
+
             return new ObjectResult(_anuncioBusiness.Create(anuncio));
         }
 
@@ -135,6 +150,63 @@ namespace WebMotorsRestAPI.Controllers
             {
                 return BadRequest();
             }
+
+            // Verifica se Esixte Marcas Cadastras
+            var marcas = _marcaBusiness.PesquisaTodasMarcas();
+            if (marcas == null || marcas.Count == 0)
+            {
+                return NotFound("Marcas não Encontradas");
+            }
+
+            if (anuncio.Marca.Trim().Length > 45)
+            {
+                return NotFound("Marca não pode ter mais de 45 digitos");
+            }
+
+            //Verica se a Marca Especifica Existe
+            Marca marca = _marcaBusiness.RetornaMarca(anuncio.Marca.ToString());
+            if (marca == null)
+            {
+                return NotFound($"Marca {anuncio.Marca} não Encontrada!");
+            }
+
+            //Pegando o ID da Marca Selecionada e Verifica se Existe Modelos Cadastrados
+            var modelos = _modeloBusiness.PesquisaTodosModelos(marca.ID);
+            if (modelos == null || modelos.Count == 0)
+            {
+                return NotFound("Modelos não Encontradas");
+            }
+
+            // Retorna o Modelo Selecionado
+            Modelo modelo = _modeloBusiness.RetornaModelo(marca.ID, anuncio.Modelo);
+            if (modelo == null)
+            {
+                return NotFound($"Modelo {anuncio.Modelo} não Encontrado!");
+            }
+
+            if (anuncio.Modelo.Trim().Length > 45)
+            {
+                return NotFound("Modelo não pode ter mais de 45 digitos");
+            }
+
+            //Pesquisa Versões de Veiculos 
+            var versoes = _versaoBusiness.PesquisaTodoasVersoes(modelo.ID);
+            if (versoes == null || versoes.Count == 0)
+            {
+                return NotFound("Versões não Encontradas");
+            }
+
+            Versao versao = _versaoBusiness.RetornaVersao(modelo.ID, anuncio.Versao);
+            if (versao == null)
+            {
+                return NotFound($"Versão {anuncio.Versao} não Encontrada!");
+            }
+
+            if (anuncio.Versao.Trim().Length > 45)
+            {
+                return NotFound("Versão não pode ter mais de 45 digitos");
+            }
+
             return new ObjectResult(_anuncioBusiness.Update(anuncio));
         }
 

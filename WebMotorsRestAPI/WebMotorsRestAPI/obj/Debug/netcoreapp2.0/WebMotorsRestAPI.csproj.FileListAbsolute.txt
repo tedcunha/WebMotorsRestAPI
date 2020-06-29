@@ -9,7 +9,7 @@ C:\Ricardo\testes\WebMotors\WebMotorsRestAPI\WebMotorsRestAPI\WebMotorsRestAPI\W
 C:\Ricardo\testes\WebMotors\WebMotorsRestAPI\WebMotorsRestAPI\WebMotorsRestAPI\WebMotorsRestAPI\obj\Debug\netcoreapp2.0\WebMotorsRestAPI.csprojAssemblyReference.cache
 C:\Ricardo\testes\WebMotors\WebMotorsRestAPI\WebMotorsRestAPI\WebMotorsRestAPI\WebMotorsRestAPI\obj\Debug\netcoreapp2.0\WebMotorsRestAPI.AssemblyInfoInputs.cache
 C:\Ricardo\testes\WebMotors\WebMotorsRestAPI\WebMotorsRestAPI\WebMotorsRestAPI\WebMotorsRestAPI\obj\Debug\netcoreapp2.0\WebMotorsRestAPI.AssemblyInfo.cs
+C:\Ricardo\testes\WebMotors\WebMotorsRestAPI\WebMotorsRestAPI\WebMotorsRestAPI\WebMotorsRestAPI\obj\Debug\netcoreapp2.0\WebMotorsRestAPI.csproj.CoreCompileInputs.cache
 C:\Ricardo\testes\WebMotors\WebMotorsRestAPI\WebMotorsRestAPI\WebMotorsRestAPI\WebMotorsRestAPI\obj\Debug\netcoreapp2.0\WebMotorsRestAPI.dll
 C:\Ricardo\testes\WebMotors\WebMotorsRestAPI\WebMotorsRestAPI\WebMotorsRestAPI\WebMotorsRestAPI\obj\Debug\netcoreapp2.0\WebMotorsRestAPI.pdb
 C:\Ricardo\testes\WebMotors\WebMotorsRestAPI\WebMotorsRestAPI\WebMotorsRestAPI\WebMotorsRestAPI\obj\Debug\netcoreapp2.0\WebMotorsRestAPI.genruntimeconfig.cache
-C:\Ricardo\testes\WebMotors\WebMotorsRestAPI\WebMotorsRestAPI\WebMotorsRestAPI\WebMotorsRestAPI\obj\Debug\netcoreapp2.0\WebMotorsRestAPI.csproj.CoreCompileInputs.cache
