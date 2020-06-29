@@ -8,6 +8,8 @@ using WebMotorsRestAPI.Business;
 using WebMotorsRestAPI.Business.Implementations;
 using WebMotorsRestAPI.Repository;
 using WebMotorsRestAPI.Repository.Implementations;
+using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace WebMotorsRestAPI
 {
@@ -30,6 +32,19 @@ namespace WebMotorsRestAPI
 
             services.AddApiVersioning();
 
+            //Swagger
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",
+                    new Info
+                    {
+                        Title = "RESTfull API com ASP .NET Core 2.0",
+                        Version = "v1"
+                    });
+            });
+            // Fim Swagger
+
+
             services.AddScoped<IAnuncioBusiness, AnuncioBusinessImpl>();
             services.AddScoped<IMarcaBusiness, MarcaBusinessImpl>();
             services.AddScoped<IModeloBusiness, ModeloBusinessImpl>();
@@ -50,6 +65,17 @@ namespace WebMotorsRestAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // Conf. Swagger
+            app.UseSwagger();
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/Swagger.json", "Minha API V1");
+            });
+
+            var option = new RewriteOptions();
+            option.AddRedirect("^$", "swagger");
+            app.UseRewriter(option);
+            // Fim Swegger
 
             app.UseMvc();
         }
